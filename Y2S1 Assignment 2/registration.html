@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic document metadata and resources -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for an account at Sweet Life.">
+    <meta name="keywords" content="Sweet Life, register, account, ice-cream">
+    <title>Register - Sweet Life</title>
+    <!-- Shared stylesheet and JavaScript -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body id="register-page">
+    <header>
+        <!-- Site header with logo and navigation -->
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="Sweet Life Logo" class="logo">
+            </a>
+            <h1>Sweet Life Ice-Cream</h1>
+        </div>
+        <nav>
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="registration.html">Register</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="features.html">Enhancements</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Registration form for creating an account -->
+        <section class="card form-container">
+            <h2>Create Your Account</h2>
+            <p>Register to save your favourite orders and get exclusive deals!</p>
+            
+            <!-- Registration form is validated by JavaScript in script.js -->
+            <form id="register-form" action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php" method="POST" novalidate>
+                
+                <!-- Summary area where JavaScript lists all validation errors -->
+                <div id="form-errors" class="error-summary" aria-live="polite"></div>
+
+                <fieldset>
+                    <!-- Login details: username and password fields -->
+                    <legend>Login Details</legend>
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"> <span class="error-message" id="username-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password"
+                               pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{9,}"
+                               title="At least 9 characters with uppercase, lowercase, number, and symbol.">
+                        <span class="error-message" id="password-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password">
+                        <span class="error-message" id="confirm-password-error"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <!-- Personal information: email and gender -->
+                    <legend>Personal Information</legend>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender:</label> <div class="radio-group">
+                            <label><input type="radio" name="gender" value="male"> Male</label>
+                            <label><input type="radio" name="gender" value="female"> Female</label>
+                        </div>
+                        <span class="error-message" id="gender-error"></span>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <!-- User preferences about ice-cream and referral source -->
+                    <legend>Your Preferences</legend>
+                    <div class="form-group">
+                        <label>Favourite Ice-Cream Types:</label> <div class="checkbox-group">
+                            <label><input type="checkbox" name="favs[]" value="vanilla"> Vanilla</label>
+                            <label><input type="checkbox" name="favs[]" value="chocolate"> Chocolate</label>
+                            <label><input type="checkbox" name="favs[]" value="strawberry"> Strawberry</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="referral">How did you hear about us?</label>
+                        <select id="referral" name="referral"> <option value="">Please select</option>
+                            <option value="friend">Friend</option>
+                            <option value="search">Search Engine</option>
+                            <option value="social">Social Media</option>
+                            <option value="walk-in">Walked In</option>
+                            <option value="none">None of the above</option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <button type="submit" id="submit-btn">Register</button> </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sweet Life. All rights reserved.</p>
+            <p>This website is created for the purpose of COS10005 Assignment 2.</p>
+            <p>Author: Khong Cheng Hao</p>
+            <p>Student ID: 105557213</p>
+        </div>
+    </footer>
+</body>
+</html>

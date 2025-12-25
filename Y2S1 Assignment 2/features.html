@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic document metadata and resources -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="List of website enhancements for COS10005 Assignment 2.">
+    <meta name="keywords" content="Sweet Life, features, enhancements, javascript">
+    <title>Website Enhancements - Sweet Life</title>
+    <!-- Shared stylesheet and JavaScript used across the site -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body id="features-page">
+    <header>
+        <!-- Site header with logo and main navigation -->
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="Sweet Life Logo" class="logo">
+            </a>
+            <h1>Sweet Life Ice-Cream</h1>
+        </div>
+        <nav>
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="registration.html">Register</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="features.html">Enhancements</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Task 3: Website enhancements description -->
+        <section class="card">
+            <h2>Website Enhancements</h2>
+            <p>This page lists the enhancements implemented as required by Task 3 of the assignment.</p>
+            
+            <!-- Enhancement 1: Highlighting the current page in the navigation bar -->
+            <article class="feature-item">
+                <h3>1. Highlight Current Page in Navigator</h3>
+                <p><strong>Description:</strong> The navigation menu item corresponding to the current webpage is automatically highlighted with a different style.</p>
+                <p><strong>Implementation:</strong> This feature is active on <strong>all pages</strong>. It is implemented in `js/script.js` in the `highlightCurrentNav()` function, which adds an `active-link` class. This class is styled in `css/style.css`.</p>
+                <p><strong>Links:</strong></p>
+                <ul>
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="registration.html">Registration Page</a></li>
+                    <li><a href="order.html">Order Page</a></li>
+                    <li><a href="features.html">Enhancements Page (This Page)</a></li>
+                </ul>
+            </article>
+
+            <!-- Enhancement 2: Automatic billing address copying on the order page -->
+            <article class="feature-item">
+                <h3>2. Automatic Billing Address</h3>
+                <p><strong>Description:</strong> On the order form, a checkbox allows the user to automatically populate the billing address fields with the values from the delivery address fields.</p>
+                <p><strong>Implementation:</strong> If the delivery address is not yet filled, an alert is shown. This is implemented in `js/script.js` in the `initOrderPage()` function, which adds a 'change' listener to the checkbox.</p>
+                <p><strong>Link:</strong></p>
+                <ul>
+                    <li><a href="order.html#billing-details">Go to Order Page (Billing Section)</a></li>
+                </ul>
+            </article>
+
+            <!-- Enhancement 3: Adaptive credit card number length based on card type -->
+            <article class="feature-item">
+                <h3>3. Adaptive Credit Card Number Length</h3>
+                <p><strong>Description:</strong> On the order form, when a user selects a credit card type (Visa, MasterCard, or American Express), the <code>maxLength</code> attribute of the credit card number input field is dynamically updated.</p>
+                <p><strong>Implementation:</strong> The length is set to 16 for Visa/MasterCard and 15 for American Express. This is implemented in <code>js/script.js</code> in the <code>initOrderPage()</code> function, which adds a <code>change</code> listener to the card type select menu.</p>
+                <p><strong>Link:</strong></p>
+                <ul>
+                    <li><a href="order.html#payment-details">Go to Order Page (Payment Section)</a></li>
+                </ul>
+            </article>
+
+            <!-- Enhancement 4: Session storage for saving the order form -->
+            <article class="feature-item">
+                <h3>4. Session Storage for Order Form</h3>
+                <p><strong>Description:</strong> The order form automatically saves what the user types (address, contact details, and flavour quantities) into <code>sessionStorage</code>, so their progress is not lost if they accidentally refresh or navigate away and come back during the same browser session.</p>
+                <p><strong>Implementation:</strong> This feature is implemented in <code>js/script.js</code> by the functions <code>initSessionStorage()</code>, <code>saveFormDataToSession()</code>, and <code>restoreFormData()</code>. These functions are called from <code>initOrderPage()</code> and work together to save values on every change and restore them when the page loads.</p>
+                <p><strong>How to verify it is working:</strong></p>
+                <ul>
+                    <li>Open the <a href="order.html">Order Page</a> and fill in some delivery, billing, and flavour quantity fields.</li>
+                    <li>Refresh the page (or close the tab and re-open the order page) in the same browser session.</li>
+                    <li>Check that all the previously entered values and quantities are automatically restored.</li>
+                    <li>For advanced verification, open the browser developer tools &gt; Application/Storage tab and confirm that an item named <code>orderFormData</code> appears under <code>sessionStorage</code> for this site.</li>
+                </ul>
+            </article>
+            
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sweet Life. All rights reserved.</p>
+            <p>This website is created for the purpose of COS10005 Assignment 2.</p>
+            <p>Author: Khong Cheng Hao</p>
+            <p>Student ID: 105557213</p>
+        </div>
+    </footer>
+</body>
+</html>

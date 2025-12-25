@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic document metadata and resources -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order your favourite ice-cream from Sweet Life.">
+    <meta name="keywords" content="Sweet Life, order, delivery, pickup, ice-cream">
+    <title>Order Now - Sweet Life</title>
+    <!-- Shared stylesheet and JavaScript for the site -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+<body id="order-page">
+    <header>
+        <!-- Site header with logo and navigation -->
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="images/logo.png" alt="Sweet Life Logo" class="logo">
+            </a>
+            <h1>Sweet Life Ice-Cream</h1>
+        </div>
+        <nav>
+            <ul class="container">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="registration.html">Register</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="features.html">Enhancements</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Order form for delivery or pickup -->
+        <section class="card form-container">
+            <h2>Place Your Order</h2>
+            <p>Get your ice-cream delivered or ready for pickup!</p>
+            
+            <!-- Order form uses JavaScript validation and enhancements (see script.js) -->
+            <form id="order-form" action="http://mercury.swin.edu.au/it000000/cos10005/regtest.php" method="POST" novalidate>
+                
+                <!-- Summary of all validation errors will appear here -->
+                <div id="form-errors" class="error-summary" aria-live="polite"></div>
+
+                <fieldset>
+                    <!-- Choose between delivery or pickup -->
+                    <legend>Order Details</legend>
+                    <div class="form-group">
+                        <label>Order Type:</label> <div class="radio-group">
+                            <label><input type="radio" name="order-type" value="delivery" checked> Delivery</label>
+                            <label><input type="radio" name="order-type" value="pickup"> Pickup</label>
+                        </div>
+                    </div>
+                    </fieldset>
+
+                <fieldset id="delivery-details">
+                    <!-- Delivery address fields (shown only when Delivery is selected) -->
+                    <legend>Delivery Details</legend> <div class="form-group">
+                        <label for="delivery-street">Street Address:</label>
+                        <input type="text" id="delivery-street" name="delivery-street">
+                        <span class="error-message" id="delivery-street-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-suburb">Suburb:</label>
+                        <input type="text" id="delivery-suburb" name="delivery-suburb">
+                        <span class="error-message" id="delivery-suburb-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-postcode">Postcode (4 digits):</label>
+                        <input type="text" id="delivery-postcode" name="delivery-postcode" maxlength="4" pattern="\d{4}">
+                        <span class="error-message" id="delivery-postcode-error"></span>
+                    </div>
+                </fieldset>
+                
+                <fieldset id="billing-details">
+                    <!-- Billing address; can be auto-filled from delivery -->
+                    <legend>Billing Details</legend>
+                    <div class="form-group checkbox-group">
+                        <label><input type="checkbox" id="same-as-delivery"> Same as delivery address</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="billing-street">Street Address:</label>
+                        <input type="text" id="billing-street" name="billing-street">
+                        <span class="error-message" id="billing-street-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="billing-suburb">Suburb:</label>
+                        <input type="text" id="billing-suburb" name="billing-suburb">
+                        <span class="error-message" id="billing-suburb-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="billing-postcode">Postcode (4 digits):</label>
+                        <input type="text" id="billing-postcode" name="billing-postcode" maxlength="4" pattern="\d{4}">
+                        <span class="error-message" id="billing-postcode-error"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <!-- Select ice-cream flavours and quantities using plus/minus buttons -->
+                    <legend>Ice Cream Selection</legend>
+                    <div class="form-group">
+                        <label>Select flavors and quantities:</label>
+                        <div class="flavor-list">
+                            <div class="flavor-item">
+                                <span class="flavor-name">Classic Vanilla Bean</span>
+                                <div class="quantity-controls">
+                                    <button type="button" class="qty-btn qty-down" data-flavor="vanilla" aria-label="Decrease quantity">−</button>
+                                    <span class="qty-display" id="qty-vanilla" data-flavor="vanilla">[0]</span>
+                                    <button type="button" class="qty-btn qty-up" data-flavor="vanilla" aria-label="Increase quantity">+</button>
+                                </div>
+                                <input type="hidden" name="flavor-vanilla" id="flavor-vanilla" value="0">
+                            </div>
+                            <div class="flavor-item">
+                                <span class="flavor-name">Decadent Dark Chocolate</span>
+                                <div class="quantity-controls">
+                                    <button type="button" class="qty-btn qty-down" data-flavor="chocolate" aria-label="Decrease quantity">−</button>
+                                    <span class="qty-display" id="qty-chocolate" data-flavor="chocolate">[0]</span>
+                                    <button type="button" class="qty-btn qty-up" data-flavor="chocolate" aria-label="Increase quantity">+</button>
+                                </div>
+                                <input type="hidden" name="flavor-chocolate" id="flavor-chocolate" value="0">
+                            </div>
+                            <div class="flavor-item">
+                                <span class="flavor-name">Strawberry Fields Sorbet</span>
+                                <div class="quantity-controls">
+                                    <button type="button" class="qty-btn qty-down" data-flavor="strawberry" aria-label="Decrease quantity">−</button>
+                                    <span class="qty-display" id="qty-strawberry" data-flavor="strawberry">[0]</span>
+                                    <button type="button" class="qty-btn qty-up" data-flavor="strawberry" aria-label="Increase quantity">+</button>
+                                </div>
+                                <input type="hidden" name="flavor-strawberry" id="flavor-strawberry" value="0">
+                            </div>
+                        </div>
+                        <span class="error-message" id="flavor-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="remarks">Remarks (Optional):</label>
+                        <textarea id="remarks" name="remarks" rows="4" placeholder="Any special instructions or requests..."></textarea>
+                        <span class="error-message" id="remarks-error"></span>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <!-- Customer contact information and choice of payment method -->
+                    <legend>Contact & Payment</legend>
+                    <div class="form-group">
+                        <label for="contact-number">Contact Number:</label>
+                        <input type="tel" id="contact-number" name="contact-number">
+                        <span class="error-message" id="contact-number-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email for Receipt:</label>
+                        <input type="email" id="email" name="email">
+                        <span class="error-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Method:</label> <div class="radio-group">
+                            <label><input type="radio" name="pay-method" value="online" checked> Pay Online</label>
+                            <label><input type="radio" name="pay-method" value="pickup"> Pay on Pickup</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset id="payment-details">
+                    <!-- Online payment details; hidden when Pay on Pickup is chosen -->
+                    <legend>Credit Card Information</legend> <div class="form-group">
+                        <label for="card-type">Card Type:</label>
+                        <select id="card-type" name="card-type">
+                            <option value="">Select card type</option>
+                            <option value="visa">Visa</option>
+                            <option value="mastercard">MasterCard</option>
+                            <option value="amex">American Express</option>
+                        </select>
+                        <span class="error-message" id="card-type-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-name">Name on Card:</label>
+                        <input type="text" id="card-name" name="card-name" pattern="[A-Za-z ]+" title="Name on card should contain letters and spaces only.">
+                        <span class="error-message" id="card-name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" name="card-number">
+                        <span class="error-message" id="card-number-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-expiry">Expiry Date (MM/YY):</label>
+                        <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                        <span class="error-message" id="card-expiry-error"></span>
+                    </div>
+                     <div class="form-group">
+                        <label for="card-cvv">CVV:</label>
+                        <input type="text" id="card-cvv" name="card-cvv" maxlength="4">
+                        <span class="error-message" id="card-cvv-error"></span>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <button type="submit" id="submit-btn">Place Order</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sweet Life. All rights reserved.</p>
+            <p>This website is created for the purpose of COS10005 Assignment 2.</p>
+            <p>Author: Khong Cheng Hao</p>
+            <p>Student ID: 105557213</p>
+        </div>
+    </footer>
+</body>
+</html>
