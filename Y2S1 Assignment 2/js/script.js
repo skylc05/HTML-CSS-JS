@@ -1,7 +1,6 @@
 /*
   File: script.js
-  Author: Khong Cheng Hao
-  Student ID: 105557213
+  Author: Sky
   Date: 25/10/2025
   Description: Main JavaScript file for COS10005 Assignment 2.
   Handles:
